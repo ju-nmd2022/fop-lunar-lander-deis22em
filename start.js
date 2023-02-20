@@ -1,8 +1,7 @@
 function alien(x, y) {
-  
   push();
-  translate(x, y);
-  scale(0.4);
+  translate(20, 40);
+
   stroke(130, 38, 222);
   strokeWeight(1.5);
 
@@ -58,28 +57,45 @@ function alien(x, y) {
   ellipse(210, 168, 6, 3);
 }
 
-let x = 100;
-let y = 100;
-let speed = 0;
+function button(){
+fill(239, 52, 239);
+noStroke();
+rect(145, 300, 150, 50);
 
-function draw() {
-background(0, 0, 0); 
-  alien(x, y);
-
-  x = x + speed;
-
-  if (keyIsDown(68)) {
-    speed = 5;
-  } else if (keyIsDown(65)) {
-    speed = -5;
-  } else {
-    speed = 0;
-  }
+fill(255, 255, 255);
+text("Play Game!", 187, 330);
 }
 
-// function draw() {
-//     clear();
-//     alien(x, 100, 100);
+push();
+let starX = [];
+let starY = [];
+let starAlpha = [];
 
-//     x = x + 1;
-// }
+const width = 500;
+const length = 300;
+
+for (let i = 0; i < 250; i++) {
+  const x = Math.floor(Math.random() * width);
+  const y = Math.floor(Math.random() * height);
+  const alpha = Math.random();
+  starX.push(x);
+  starY.push(y);
+  starAlpha.push(alpha);
+}
+
+function draw() {
+  noStroke();
+  background(56, 13, 176);
+
+  for (let index in starX) {
+    fill(255, 255, 255, starAlpha[index] * 255);
+    ellipse(starX[index], starY[index], 3);
+    pop();
+
+
+    text("Space Adventure", 175, 100);
+    button();
+    alien();
+}
+ }
+
