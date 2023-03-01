@@ -1,3 +1,7 @@
+function setup() {
+  createCanvas(1000, 600);
+}
+
 function alien(x, y) {
   push();
   translate(x, y);
@@ -56,11 +60,10 @@ function alien(x, y) {
   ellipse(201, 173, 3, 3);
   ellipse(180, 168, 6, 3);
   ellipse(210, 168, 6, 3);
-
   pop();
 }
 
-function ground(){
+function ground() {
   fill(202, 57, 178);
   rect(0, 550, 2550, 200);
 }
@@ -74,7 +77,7 @@ let up = 0.3;
 const width = 1000;
 const height = 600;
 
-const w = 800;
+const w = 900;
 const h = 400;
 
 let obstacleX = [];
@@ -108,25 +111,25 @@ function draw() {
   for (let index in starX) {
     fill(255, 255, 255, starAlpha[index] * 255);
     ellipse(starX[index], starY[index], 3);
-     }
-   
-  //background: end
-    
-     for (let index in obstacleX) {
-       fill(164, 9, 9);
+  }
 
-       //body of meteor
-       ellipse(obstacleX[index], obstacleY[index], 40);
-     }
+  for (let index in obstacleX) {
+    fill(164, 9, 9);
+
+    //body of meteor
+    ellipse(obstacleX[index], obstacleY[index], 40);
+  }
 
   ground();
+  //background: end
+
   //alien movement: start
   alien(x, y);
   y = y - up;
   x = x + speed;
   y = y + down;
   down = down + 0.1;
-  
+
   if (keyIsDown(68)) {
     speed = 3;
   } else if (keyIsDown(65)) {
@@ -135,15 +138,13 @@ function draw() {
     speed = 0;
   }
 
-  if(keyIsDown(32)) {
-    up = up + 0.3; 
-  } 
+  if (keyIsDown(32)) {
+    up = up + 0.3;
+  }
 
   if (x > 900) x = 899;
   if (x < 0) x = +1;
   if (y < -30) y = -29;
-
+  if (y > 499) y = 498;
   //alien movement: end
-  
 }
-

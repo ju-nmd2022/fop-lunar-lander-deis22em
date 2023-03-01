@@ -1,7 +1,32 @@
-function alien(x, y) {
-  push();
-  translate(20, 40);
 
+let buttonIsClicked = false;
+let state = "start";
+
+function startScreen() {
+  push();
+  let starX = [];
+  let starY = [];
+  let starAlpha = [];
+
+  for (let i = 0; i < 250; i++) {
+    const x = Math.floor(Math.random() * width);
+    const y = Math.floor(Math.random() * height);
+    const alpha = Math.random();
+    starX.push(x);
+    starY.push(y);
+    starAlpha.push(alpha);
+  }
+
+  noStroke();
+  background(56, 13, 176);
+  // for (let index in starX) {
+  // fill(255, 255, 255, starAlpha[index] * 255);
+  // ellipse(starX[index], starY[index], 3);}
+  pop();
+
+  //alien: start
+  push();
+  translate(20, 20);
   stroke(130, 38, 222);
   strokeWeight(1.5);
 
@@ -55,47 +80,78 @@ function alien(x, y) {
   ellipse(201, 173, 3, 3);
   ellipse(180, 168, 6, 3);
   ellipse(210, 168, 6, 3);
+  pop();
+  //alien: end
+
+  //title
+  fill(255, 255, 255);
+  text("Space Adventure", 175, 100);
+
+  //play button
+  fill(239, 52, 239);
+  noStroke();
+  rect(145, 300, 150, 50);
+  fill(255, 255, 255);
+  text("Play Game!", 187, 330);
+
+  if (buttonIsClicked) {
+    state ="end";
+  }
 }
 
-function button(){
-fill(239, 52, 239);
-noStroke();
-rect(145, 300, 150, 50);
+function endScreen() {
+  background(73, 17, 225);
+  fill(255, 255, 255);
 
-fill(255, 255, 255);
-text("Play Game!", 187, 330);
+  push();
+  scale(5);
+  text("Game Over", 80, 30);
+  pop();
+
+  push();
+  fill(239, 52, 239);
+  noStroke();
+  rect(480, 200, 150, 50);
+  fill(255, 255, 255);
+  scale(2);
+  text("Play Again", 250, 115);
+  pop();
 }
 
-push();
-let starX = [];
-let starY = [];
-let starAlpha = [];
+endScreen();
 
-const width = 500;
-const length = 300;
-
-for (let i = 0; i < 250; i++) {
-  const x = Math.floor(Math.random() * width);
-  const y = Math.floor(Math.random() * height);
-  const alpha = Math.random();
-  starX.push(x);
-  starY.push(y);
-  starAlpha.push(alpha);
-}
+let buttonIsClicked2 = false;
 
 function draw() {
-  noStroke();
-  background(56, 13, 176);
-
-  for (let index in starX) {
-    fill(255, 255, 255, starAlpha[index] * 255);
-    ellipse(starX[index], starY[index], 3);
-    pop();
-
-
-    text("Space Adventure", 175, 100);
-    button();
-    alien();
+  if (
+    mouseIsPressed &&
+    mouseX > 480 &&
+    mouseX < 480 + 150 &&
+    mouseY &&
+    mouseY > 200 &&
+    mouseY < 200 + 50
+  ) {
+    console.log("pressed");
+  }
 }
- }
 
+function mousePressed2() {
+    if (mouseX > 480 &&
+    mouseX < 480 + 150 &&
+    mouseY &&
+    mouseY > 200 &&
+    mouseY < 200 + 50) {
+    buttonIsClicked2 = true;
+    }
+}
+
+
+function draw() {
+  if (state === "start") {
+    startScreen();
+  } else if (state === "end") {
+    endScreen();
+  } else if (state === "game") {
+    gameScreen();
+  }
+}
