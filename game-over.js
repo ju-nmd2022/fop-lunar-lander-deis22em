@@ -1,3 +1,6 @@
+let buttonIsClicked2 = false;
+endScreen();
+
 function endScreen() {
   background(73, 17, 225);
   fill(255, 255, 255);
@@ -15,11 +18,12 @@ function endScreen() {
   scale(2);
   text("Play Again", 250, 115);
   pop();
+
+  if (buttonIsClicked2){
+    state="start";
+  }
 }
 
-endScreen();
-
-let buttonIsClicked2 = false;
 
 function draw() {
   if (
@@ -41,5 +45,7 @@ function mousePressed2() {
     mouseY > 200 &&
     mouseY < 200 + 50) {
     buttonIsClicked2 = true;
+    console.log("pressed");
     }
 }
+
