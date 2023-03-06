@@ -1,6 +1,7 @@
 function setup() {
   createCanvas(1000, 600);
 
+  //Code for stars and obstacles needed to be placed here for it to work
   for (let i = 0; i < 250; i++) {
     const x = Math.floor(Math.random() * width);
     const y = Math.floor(Math.random() * height);
@@ -118,23 +119,29 @@ function startScreen() {
   //title
   push();
   fill(255, 255, 255);
-  scale(2); 
+  scale(2);
   text("Space Adventure", 65, 50);
   text("Tutorial:", 315, 50);
   pop();
 
   //instructions
-
   text(
     "Try to land Lars the Alien safely onto the surface of the planet, Proxima Pink.",
     470,
     200
   );
   text(
-    "But beware of the Reds and the strong gravitational pull of Proxima Pink trying to block his path!", 470, 240);
-  text("You move from side to side by using the keys A & D, and spacebar to adjust your fuel.", 470, 280);
-
+    "But beware of the Reds and the strong gravitational pull of Proxima Pink trying to block his path!",
+    470,
+    240
+  );
+  text(
+    "You move from side to side by using the keys A & D, and spacebar to adjust your fuel.",
+    470,
+    280
+  );
   text("Goodluck out there!", 625, 320);
+
   //play button
   fill(239, 52, 239);
   noStroke();
@@ -220,6 +227,7 @@ function gameScreen() {
   pop();
 }
 
+//THE CHARACTER
 function alien() {
   push();
   fill(202, 57, 178);
@@ -321,6 +329,7 @@ function alien() {
   //ALIEN MOVEMENT: END
 }
 
+//For game to start over when "play again" is pressed
 function reset() {
   isGameActive = true;
   x = 0;
@@ -331,6 +340,8 @@ function reset() {
   up = 0.3;
 }
 
+//Added by courtesy of Oscar Nordström 
+//checks if player is within obstacles radius
 function checkCollisions() {
   for (let index in obstacles) {
     if (
