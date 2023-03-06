@@ -24,7 +24,7 @@ let x = 0;
 let y = 0;
 let leftRight = 0;
 let maxVelocity = 0.5;
-let down = 0.1;
+let down = 1;
 let up = 0.3;
 let isGameActive = true;
 
@@ -46,8 +46,8 @@ let playerOffsetY = 195 * 0.4;
 //OBSTACLES
 class obstacle {
   constructor(x, y, w) {
-    this.x = x;
-    this.y = y;
+    this.x = x +50;
+    this.y = y +50;
     this.w = w;
     this.r = w / 2;
   }
@@ -323,6 +323,7 @@ function alien() {
     winScreen();
   }
 
+  //alien cannot pass these points on the screen
   if (x > 900) x = 899;
   if (x < 0) x = +1;
   if (y < -30) y = -29;
