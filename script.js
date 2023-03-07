@@ -46,8 +46,8 @@ let playerOffsetY = 195 * 0.4;
 //OBSTACLES
 class obstacle {
   constructor(x, y, w) {
-    this.x = x +50;
-    this.y = y +50;
+    this.x = x + 50;
+    this.y = y + 50;
     this.w = w;
     this.r = w / 2;
   }
@@ -127,17 +127,17 @@ function startScreen() {
   //instructions
   text(
     "Try to land Lars the Alien safely onto the surface of the planet, Proxima Pink.",
-    470,
+    450,
     200
   );
   text(
     "But beware of the Reds and the strong gravitational pull of Proxima Pink trying to block his path!",
-    470,
+    450,
     240
   );
   text(
     "You move from side to side by using the keys A & D, and spacebar to adjust your fuel.",
-    470,
+    450,
     280
   );
   text("Goodluck out there!", 625, 320);
@@ -168,16 +168,16 @@ function endScreen() {
 
   push();
   scale(5);
-  text("Game Over", 80, 30);
+  text("Game Over", 65, 30);
   pop();
 
   push();
   fill(239, 52, 239);
   noStroke();
-  rect(480, 200, 150, 50);
+  rect(410, 200, 150, 50);
   fill(255, 255, 255);
   scale(2);
-  text("Play Again", 250, 115);
+  text("Play Again", 215, 115);
   pop();
 
   if (buttonIsClicked) {
@@ -193,16 +193,16 @@ function winScreen() {
 
   push();
   scale(5);
-  text("Winner, winner, chicken dinner!", 30, 30);
+  text("Winner, winner, chicken dinner!", 18, 30);
   pop();
 
   push();
   fill(239, 52, 239);
   noStroke();
-  rect(480, 200, 150, 50);
+  rect(410, 200, 150, 50);
   fill(255, 255, 255);
   scale(2);
-  text("Play Again", 250, 115);
+  text("Play Again", 215, 115);
   pop();
 }
 
@@ -341,7 +341,7 @@ function reset() {
   up = 0.3;
 }
 
-//Added by courtesy of Oscar Nordström 
+//Added by courtesy of Oscar Nordström
 //checks if player is within obstacles radius
 function checkCollisions() {
   for (let index in obstacles) {
@@ -363,8 +363,8 @@ function checkCollisions() {
 function draw() {
   if (
     mouseIsPressed &&
-    mouseX > 480 &&
-    mouseX < 480 + 150 &&
+    mouseX > 410 &&
+    mouseX < 410 + 150 &&
     mouseY &&
     mouseY > 200 &&
     mouseY < 200 + 50
